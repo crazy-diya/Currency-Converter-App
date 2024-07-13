@@ -10,7 +10,6 @@ class NetworkInfoImpl implements NetworkInfo {
   NetworkInfoImpl({required this.connectivity});
 
   @override
-  // TODO: implement isConnected
   Future<bool> get isConnected async {
     var connectivityResult = await connectivity.checkConnectivity();
     switch (connectivityResult[0]) {
