@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Font Colors
+  static const Color colorTransparent = Colors.transparent;
   static const Color colorPrimary = Color(0xFF181818);
   static const Color colorSecondary = Color(0xFF3F3939);
   static const Color colorBlack = Color(0xFF000000);

@@ -55,6 +55,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
           backgroundColor: Colors.transparent,
           leading: InkWell(
             splashFactory: NoSplash.splashFactory,
+            splashColor: AppColors.colorTransparent,
             onTap: () {},
             child: Icon(
               Icons.arrow_back_rounded,
@@ -171,6 +172,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                     children: [
                       InkWell(
                         splashFactory: NoSplash.splashFactory,
+                        splashColor: AppColors.colorTransparent,
                         onTap: () {
                           _showCurrencyPicker(context);
                         },
@@ -182,7 +184,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                             ),
                           ),
                           padding: EdgeInsets.all(2.5.w),
-                          child:  const Text(
+                          child: const Text(
                             AppStrings.addConvertor,
                             style: TextStyle(color: AppColors.textColorGreen),
                           ),
@@ -235,6 +237,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                               favoriteList.length,
                               (index) => InkWell(
                                 splashFactory: NoSplash.splashFactory,
+                                splashColor: AppColors.colorTransparent,
                                 onTap: () {
                                   innerSetState(() {
                                     currencyList.add(favoriteList[index]);
@@ -243,13 +246,9 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                                       totalAmount.removeAt(index);
                                     });
                                   });
+                                  appSharedData.clearData(savedCurrencies);
                                   if (favoriteList.isNotEmpty) {
-                                    if (appSharedData.hasData(savedCurrencies)) {
-                                      appSharedData.clearData(savedCurrencies);
-                                      appSharedData.setData(savedCurrencies, jsonEncode(favoriteList));
-                                    } else {
-                                      appSharedData.setData(savedCurrencies, jsonEncode(favoriteList));
-                                    }
+                                    appSharedData.setData(savedCurrencies, jsonEncode(favoriteList));
                                   }
                                   setState(() {});
                                 },
@@ -305,6 +304,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                               return !favoriteList.contains(currencyList[index])
                                   ? InkWell(
                                       splashFactory: NoSplash.splashFactory,
+                                      splashColor: AppColors.colorTransparent,
                                       onTap: () {
                                         innerSetState(() {
                                           favoriteList.add(currencyList[index]);
