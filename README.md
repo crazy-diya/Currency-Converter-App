@@ -4,13 +4,24 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### SETUP_PROJECT
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The used flutter version is 3.19.6
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+After the cloning project choosing the above flutter version and getting pubget anyone can run this project.
+
+Works properly for iOS / Android devices Both
+
+
+### DETAILS_ABOUT_PROJECT
+
+Used the "https://app.freecurrencyapi.com/" site to get currency convert API.
+
+Used CLEAN architecture and Cubit(BLOC) as a state management tool
+
+I used SharedPreferences for Local data persistence.
+
+
+### SCRENSHOTS
+
