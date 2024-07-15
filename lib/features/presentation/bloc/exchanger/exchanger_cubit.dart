@@ -1,23 +1,21 @@
 import 'package:bloc/bloc.dart';
-import 'package:currency_converter_app/utils/app_constants.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../error/failures.dart';
+import '../../../../utils/app_constants.dart';
+import '../../../data/model/currencies_response_model.dart';
 import '../../../domain/usecases/splash_usecase.dart';
 
-part 'splash_state.dart';
+part 'exchanger_state.dart';
 
-class SplashCubit extends Cubit<SplashState> {
+class ExchangerCubit extends Cubit<ExchangerState> {
   final Splash splash;
 
-  SplashCubit({required this.splash}) : super(SplashInitial());
+  ExchangerCubit({required this.splash}) : super(ExchangerInitial());
 
-  Future<dynamic> getSplashData({String? type = "USD"}) async {
+  Future<dynamic> getCurrencyConvertData({String? type = "USD"}) async {
     emit(ApiLoadingState());
-    final result = await splash({
-      "apikey": AppConstants.apiKey,
-      "base_currency": type
-    });
+    final result = await splash({"apikey": AppConstants.apiKey, "base_currency": type});
     emit(
       result.fold(
         (l) {
@@ -32,8 +30,7 @@ class SplashCubit extends Cubit<SplashState> {
           }
         },
         (r) {
-          AppConstants.currencyList = r.data;
-          return SplashSuccessState();
+          return ExchangerSuccessState(currenciesResponseModel: r);
         },
       ),
     );

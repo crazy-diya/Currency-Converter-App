@@ -52,13 +52,13 @@ class APIHelper {
 
   Future<dynamic> post(T) async {}
 
-  Future<dynamic> get(Map<String, dynamic> param) async {
+  Future<dynamic> get(String tag, {Map<String, dynamic>? param}) async {
     try {
       final response = await dio.get(
-        NetworkConfig.getNetworkConfig(),
+        NetworkConfig.getNetworkConfig() + tag,
         queryParameters: param,
       );
-      return response;
+      return response.data;
     } on DioException catch (error) {
       throw DioExceptionError(
         errorResponse: ErrorResponseEntity(

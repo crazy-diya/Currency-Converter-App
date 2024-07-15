@@ -1,7 +1,8 @@
 class AppImages {
   ///PNG
-  static const String imgSmartPay = "images/png/sp_logo.png";
+  static const String currencyConvertorImage = "assets/images/pngs/cc.png";
 
   ///SVG
-  static const String appLogo = 'images/svg/ic_app_logo.svg';
+
+  ///JPG
 }

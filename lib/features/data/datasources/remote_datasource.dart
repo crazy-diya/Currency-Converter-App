@@ -1,8 +1,9 @@
+import 'package:currency_converter_app/features/data/model/currencies_response_model.dart';
 
 import '../../../core/network/api_helper.dart';
 
 abstract class RemoteDatasource {
-  Future<dynamic> splashRequest(Map<String, dynamic> data);
+  Future<CurrenciesResponseModel> splashRequest(Map<String, dynamic> data);
 }
 
 class RemoteDatasourceImpl extends RemoteDatasource {
@@ -11,11 +12,13 @@ class RemoteDatasourceImpl extends RemoteDatasource {
   RemoteDatasourceImpl({required this.apiHelper});
 
   @override
-  Future<dynamic> splashRequest(Map<String, dynamic> data) async {
+  Future<CurrenciesResponseModel> splashRequest(Map<String, dynamic> data) async {
     try {
-      final response = await apiHelper.get({"b": "", "a": ""});
-      return response;
-      /**Here you can use Model class cast things from json to object*/
+      final response = await apiHelper.get(
+        "latest/",
+        param: data,
+      );
+      return CurrenciesResponseModel.fromJson(response);
     } on Exception {
       rethrow;
     }

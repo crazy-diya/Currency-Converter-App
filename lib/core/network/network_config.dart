@@ -1,13 +1,13 @@
 class IPAddress {
-  static const String dev = "";
+  static const String dev = "api.freecurrencyapi.com/";
 }
 
 class ServiceProtocol {
-  static const String dev = "";
+  static const String dev = "https://";
 }
 
 class ContextRoot {
-  static const String dev = "";
+  static const String dev = "v1/";
 }
 
 class NetworkConfig {
@@ -24,6 +24,6 @@ class NetworkConfig {
   }
 
   static String _getServiceProtocol() {
-    return ContextRoot.dev;
+    return ServiceProtocol.dev;
   }
 }
