@@ -147,7 +147,6 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: ConvertedAmountWidget(
                           onChangeCurrency: (value) {
-                            print(value);
                             AppConstants.currencyList!.entries.any((element) {
                               if (element.key == value) {
                                 setState(() {
@@ -160,7 +159,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                               return false;
                             });
                           },
-                          onChangeAmount: (totalAmount[index]).toString(),
+                          onChangeAmount: (totalAmount[index].toStringAsFixed(2)).toString(),
                           currencyType: favoriteList[index],
                         ),
                       ),
@@ -229,7 +228,7 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Wrap(
-                            spacing: 8.0, // gap between adjacent items
+                            spacing: 8.0,
                             runSpacing: 4.0,
                             children: List.generate(
                               growable: true,
@@ -239,8 +238,10 @@ class _ExchangerScreenState extends State<ExchangerScreen> {
                                 onTap: () {
                                   innerSetState(() {
                                     currencyList.add(favoriteList[index]);
-                                    favoriteList.removeAt(index);
-                                    totalAmount.removeAt(index);
+                                    setState(() {
+                                      favoriteList.removeAt(index);
+                                      totalAmount.removeAt(index);
+                                    });
                                   });
                                   if (favoriteList.isNotEmpty) {
                                     if (appSharedData.hasData(savedCurrencies)) {

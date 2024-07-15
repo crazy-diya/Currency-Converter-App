@@ -14,10 +14,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<dynamic> getSplashData({String? type = "USD"}) async {
     emit(ApiLoadingState());
-    final result = await splash({
-      "apikey": AppConstants.apiKey,
-      "base_currency": type
-    });
+    final result = await splash({"apikey": AppConstants.apiKey, "base_currency": type});
     emit(
       result.fold(
         (l) {
